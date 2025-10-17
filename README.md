@@ -1,2 +1,1 @@
-# top40
-Rework of jesschwan/Top40
+# Top40
