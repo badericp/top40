@@ -3,7 +3,6 @@ require_once "SqlConnection.php";
 require __DIR__ . "/SQL/Queries.php";
 require __DIR__ . "/classes/Placing.php";
 require __DIR__ . "/classes/Song.php";
-// Open database connection
 $openDbConnection = getSqlConnection();
 
 $KWselect = $_POST['kwWeekSelect'] ?? "2025W02";
@@ -52,61 +51,6 @@ for ($i = 1; $i <= count($curPlacings); $i++) {
     </tr>";
 }
 
-//old
-#region
-// Sort ascending by year and week
-// usort($kwList, function ($a, $b) {
-//     if ($a['year'] === $b['year']) {
-//         return (int)$a['kw'] <=> (int)$b['kw'];
-//     }
-//     return (int)$a['year'] <=> (int)$b['year'];
-// });
-
-// $selectedKw = null;
-// if (isset($_POST['kwYearDropDown']))
-//     $selectedKw = $_POST['kwYearDropDown'];
-
-// if ($selectedKw) {
-//     [$year, $kw] = explode('-', $selectedKw);
-//     $year = (int)$year;
-//     $kw = (int)$kw;
-// } else {
-//     // Selected year/week from dropdown or fallback to latest        
-//     $latest = end($kwList);
-//     $year = (int)$latest['year'];
-//     $kw = (int)$latest['kw'];
-// }
-
-// $titel = null;
-// $interpret = null;
-
-// if (isset($_FILES['coverFile']) && isset($_POST['entryId'])) {
-//     // Check if the button was clicked
-//     $coverData = file_get_contents($_FILES['coverFile']['tmp_name']);
-//     $entryId = (int)$_POST['entryId'];
-
-//     if ($coverData && $entryId) {
-//         // Update DB
-//         $stmt = $openDbConnection->prepare("UPDATE top40 set cover = ? WHERE platz = ?");
-//         $stmt->send_long_data(0, $coverData);
-//         $stmt->bind_param("si", $coverData, $entryId);
-//         $stmt->execute();
-//         $stmt->close();
-//     }
-// }
-
-// // Fetch data for selected week
-// $data = getData4KW($openDbConnection, $year, $kw, $kwList);
-
-// // Get previous week label
-// $prevWeekLabel = getPrevWeekLabel4Header($openDbConnection, $year, $kw);
-
-// // Label for current week
-// $selectedLabel = "KW" . str_pad($kw, 2, '0', STR_PAD_LEFT) . " / $year";
-
-// // Show warning if no previous week exists
-// $showWarning = hasNoPreviousWeek($openDbConnection, $year, $kw);
-#endregion
 ?>
 
 <!-- HTML starts here ------------->
@@ -117,7 +61,7 @@ for ($i = 1; $i <= count($curPlacings); $i++) {
 <head>
     <meta charset="UTF-8">
     <title>Top 40</title>
-    <link href="stlyes.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
 </head>
 
 <!-- php-Teile des bodys in requires auslagern-->

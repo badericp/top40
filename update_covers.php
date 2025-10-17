@@ -57,4 +57,3 @@ foreach ($files as $filePath) {
 
 echo "<hr><p><strong>$counterUpdated</strong> covers were successfully uploaded.</p>";
 echo "</body></html>";
-?>
